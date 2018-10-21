@@ -1,11 +1,50 @@
+*.class
+bin/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Backup files
+*~
+
+# intellij
+.idea/
 *.iml
-.gradle
-/local.properties
-*/.idea/caches/build_file_checksums.ser
-*/.idea/libraries
-*/.idea/modules.xml
-*/.idea/workspace.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
+*.ipr
+*.iws
+publish.properties
+.mvn/
+
+# eclipse
+.factorypath
+.classpath
+.project
+.settings/
+
+# maven
+target/
+out/
+
+# gradle
+build/
+.gradle/
+
+# virtual machine crash logs
+hs_err_pid*
+
+# maven shade plugin
+dependency-reduced-pom.xml
+
+# maven release plugin
+pom.xml.releaseBackup
+release.properties
+
+log/
+*.log
+
+#Sensitive Configuration files
+app_config/
+db/
+confidential/
