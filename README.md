@@ -16,7 +16,7 @@ Change the code of both of the floatingActionButtons so that,
 
 Build up an UI consisting of one ImageView and three Switches as seen below
 
-![hw-02](https://github.com/taneresme/te.android.practices/blob/master/hw02/docs/Week1_Q2.png)
+![](https://github.com/taneresme/te.android.practices/tree/master/hw02/docs/Week1_Q2.png)
 
 Make three versions of the same activity, each having the following layouts:
 - ConstraintLayout
@@ -35,3 +35,19 @@ Using the UI you've built in Question 2 (ConstraintLayout version), change the f
 - Switch 3 - (tintModeSwitch): If checked, the tint should be on screen mode; in unchecked it should be multiply mode.
 
 You can find the details of ImageView views from the following link: ImageViews. Check the method setTintList and setTintMode.
+
+## Homework-04
+
+Open up a new Android Project (API level 22, Empty Project).
+
+Build up an app with a single activity which in turn has a single horizontal RecyclerView element. Each item in the RecyclerView element should consist of three items (see Figure 1):
+- One ImageView at the top
+- Two TextViews below the ImageView, one below the other
+
+![hw-04](https://github.com/taneresme/te.android.practices/blob/master/hw04/docs/Week2_Q1.png)
+
+The RecyclerView element should have the following features:
+
+- There should be AT LEAST 10 items with different images in the RecyclerView.
+- The layout of the RecyclerView should be a horizontal linear layout
+- There should be a horizontal scroll bar in the RecyclerView
