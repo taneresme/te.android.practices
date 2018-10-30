@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sunshine22</string>
+    <string name="action_settings">Settings</string>
+    <string name="weather">Weather</string>
+</resources>
