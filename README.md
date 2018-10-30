@@ -16,7 +16,7 @@ Change the code of both of the floatingActionButtons so that,
 
 Build up an UI consisting of one ImageView and three Switches as seen below
 
-![](https://github.com/taneresme/te.android.practices/tree/master/hw02/docs/Week1_Q2.png)
+![](https://github.com/taneresme/te.android.practices/blob/master/hw02/docs/Week1_Q2.png)
 
 Make three versions of the same activity, each having the following layouts:
 - ConstraintLayout
