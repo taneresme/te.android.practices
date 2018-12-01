@@ -29,21 +29,21 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements ListItemClickListener {
 
-    private static final String   DEGREE              = "\u00b0";
-    private static final int      FORECAST_LIST_ITEMS = 12;
-    private              String[] FORECASTS           = {
-            "Mon, Oct  9: 15"+DEGREE, "Tue, Oct 10: 17"+DEGREE, "Wed, Oct 11: 17"+DEGREE,
-            "Thu, Oct 12: 19"+DEGREE, "Fri, Oct 13: 19"+DEGREE, "Sat, Oct 14: 18"+DEGREE,
-            "Sun, Oct 15: 19"+DEGREE, "Mon, Oct 16: 22"+DEGREE, "Tue, Oct 17: 18"+DEGREE,
-            "Wed, Oct 18: 21"+DEGREE, "Thu, Oct 19: 12"+DEGREE, "Fri, Oct 20: 22"+DEGREE};
+    private static final String DEGREE = "\u00b0";
+    private static final int FORECAST_LIST_ITEMS = 12;
+    private String[] FORECASTS = {
+            "Mon, Oct  9: 15" + DEGREE, "Tue, Oct 10: 17" + DEGREE, "Wed, Oct 11: 17" + DEGREE,
+            "Thu, Oct 12: 19" + DEGREE, "Fri, Oct 13: 19" + DEGREE, "Sat, Oct 14: 18" + DEGREE,
+            "Sun, Oct 15: 19" + DEGREE, "Mon, Oct 16: 22" + DEGREE, "Tue, Oct 17: 18" + DEGREE,
+            "Wed, Oct 18: 21" + DEGREE, "Thu, Oct 19: 12" + DEGREE, "Fri, Oct 20: 22" + DEGREE};
 
-    private String                mWeatherAPIKey    = "1b3a6d183e0681e26f960c86ee271000";
+    private String mWeatherAPIKey = "1b3a6d183e0681e26f960c86ee271000";
 
-    private GreenAdapter          mAdapter;
-    private RecyclerView          mNumbersList;
+    private GreenAdapter mAdapter;
+    private RecyclerView mNumbersList;
     private DividerItemDecoration mDividerItemDecoration;
 
-@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        mNumbersList                      = (RecyclerView) findViewById(R.id.rv_forecast);
+        mNumbersList = (RecyclerView) findViewById(R.id.rv_forecast);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
         mNumbersList.setLayoutManager(layoutManager);
@@ -68,9 +68,19 @@ public class MainActivity extends AppCompatActivity
         mDividerItemDecoration = new DividerItemDecoration(mNumbersList.getContext(), layoutManager.getOrientation());
         mNumbersList.addItemDecoration(mDividerItemDecoration);
 
-        mAdapter = new GreenAdapter(FORECAST_LIST_ITEMS, FORECASTS, this);
+        mAdapter = new GreenAdapter(this);
         mNumbersList.setAdapter(mAdapter);
 
+        String weatherURLString = "http://api.openweathermap.org/data/2.5/forecast/" +
+                "daily?" +
+                "q=London" +
+                "&mode=JSON" +
+                "&units=metric" +
+                "&cnt=12" +
+                "&APPID=" + mWeatherAPIKey;
+
+        FetchWeatherTask weatherTask = new FetchWeatherTask(mAdapter, this.getApplicationContext());
+        weatherTask.execute(weatherURLString);
     }
 
     @Override
@@ -86,28 +96,28 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         Context context = getApplicationContext();
-        int duration    = Toast.LENGTH_SHORT;
+        int duration = Toast.LENGTH_SHORT;
 
         if (id == R.id.action_settings) {
 
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.action_help){
+        } else if (id == R.id.action_help) {
             Toast toast = Toast.makeText(context, "Help is clicked", duration);
             toast.show();
-        } else if (id == R.id.action_refresh){
+        } else if (id == R.id.action_refresh) {
 
-            SharedPreferences prefs       = PreferenceManager.getDefaultSharedPreferences(this);
-            String            location    = prefs.getString("location", "94043");
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            String location = prefs.getString("location", "94043");
 
             String weatherURLString = "http://api.openweathermap.org/data/2.5/forecast/" +
                     "daily?" +
-                    "q="+ location +
+                    "q=" + location +
                     "&mode=JSON" +
                     "&units=metric" +
                     "&cnt=12" +
-                    "&APPID="+mWeatherAPIKey;
+                    "&APPID=" + mWeatherAPIKey;
 
             FetchWeatherTask weatherTask = new FetchWeatherTask(mAdapter, this.getApplicationContext());
             weatherTask.execute(weatherURLString);
@@ -121,7 +131,7 @@ public class MainActivity extends AppCompatActivity
 
         Intent detailActivityIntent;
 
-        Log.v("MainActivity.onCreate", "Item#"+Integer.toString(clickedItemIndex));
+        Log.v("MainActivity.onCreate", "Item#" + Integer.toString(clickedItemIndex));
 
         detailActivityIntent = new Intent(MainActivity.this, DetailActivity.class);
         detailActivityIntent.putExtra(Intent.EXTRA_TEXT, "Detailed Weather Info");

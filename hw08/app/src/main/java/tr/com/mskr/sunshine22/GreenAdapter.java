@@ -8,13 +8,10 @@ import android.view.ViewGroup;
 
 public class GreenAdapter extends RecyclerView.Adapter<ForecastViewHolder> {
 
-    private int                   mNumberItems;
     private String[]              items;
     private ListItemClickListener mOnClickListener;
 
-    public GreenAdapter(int numberOfItems, String[] itemList, ListItemClickListener listener) {
-        mNumberItems     = numberOfItems;
-        items            = itemList;
+    public GreenAdapter(ListItemClickListener listener) {
         mOnClickListener = listener;
     }
 
@@ -39,13 +36,12 @@ public class GreenAdapter extends RecyclerView.Adapter<ForecastViewHolder> {
     @Override
     public int getItemCount() {
 
-        return mNumberItems;
+        return items == null ? 0 : items.length;
     }
 
     public void setWeatherData(String[] weatherData) {
 
         items        = weatherData;
-        mNumberItems = weatherData.length;
         notifyDataSetChanged();
     }
 }
