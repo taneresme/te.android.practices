@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">hw10</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_constraint_layout">ConstraintLayoutActivity</string>
+    <string name="constraint_textview_imagevisible">Image visible</string>
+    <string name="constraint_imageview_contentdescription">Image content</string>
+    <string name="constraint_textview_orangetintoverimage">Orange tint over image</string>
+    <string name="constraint_textview_tintmode">Tint mode (Screen or Multiply)</string>
+    <string name="title_activity_linear_layout">LinearLayoutActivity</string>
+    <string name="title_activity_relative_layout">RelativeLayoutActivity</string>
+</resources>
