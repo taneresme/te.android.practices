@@ -163,3 +163,8 @@ ID	Name	Author	Genre	Year
 * Author is a NOT NULL, text (or String) column
 * Genre is a text (or String) column
 * Year is an integer column
+
+## Homework-11
+
+Rewrite the Hydration app with the same functionality using the JobScheduler API instead of 
+the Firebase JobDispatcher as the JobScheduling framework.
